@@ -76,17 +76,15 @@ the wheel is attached to actual money.
 
 - Live demo: https://procurepilot-zeta.vercel.app (200, public, no login wall —
   verified Oct 19)
-- Repo: https://github.com/solanaminter/procurepilot (PUSH PENDING — 11 local
-  commits ahead of origin; needs his transient GitHub token)
-- Demo video: YouTube link (PENDING — video file ready at
-  `~/workspace/hackathons/paypal-procurepilot/video/procurepilot-demo-video.mp4`,
-  2:41; upload is his tap)
+- Repo: https://github.com/solanaminter/procurepilot (current — full backlog
+  pushed Oct 19, remote verified)
+- Demo video: https://www.youtube.com/watch?v=u-Ym7ol4QP0 (Public, 2:41,
+  uploaded Oct 19)
 - Pitch deck: (optional add if made)
 
-## Filing blockers (all his taps — do NOT file until clear)
+## Filing blockers
 
-1. GitHub push — 11 commits ahead of origin/master (transient token).
-2. YouTube upload — demo video file-pick.
-3. PayPal sandbox login — converts the sandbox-shaped PayPal path into REAL
+1. PayPal sandbox wiring — sandbox app + credentials in progress (Oct 19,
+   under Dy's blanket grant); converts the sandbox-shaped PayPal path into REAL
    sandbox transactions (past-winner pattern: real transactions on camera; mock-only
    PayPal fails the event's hard gate "meaningfully use both PayPal and AI").

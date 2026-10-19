@@ -21,12 +21,14 @@ Implementation, Design, Potential Impact, Innovation/Idea, Presentation.
       (added missing postcss.config.mjs; now 28.7 KB compiled Tailwind).
       Verified on production: parts-format POST → 200 with full data-part
       contract; SDK transport+reader reconstructs all parts, no errors.)
-- [ ] **Public code repo (GitHub) with visible LICENSE** — LICENSE (MIT) in
-      repo; repo NOT yet on GitHub (blocked: his GitHub token, transient use)
+- [x] **Public code repo (GitHub) with visible LICENSE** — LICENSE (MIT) in
+      repo; public at https://github.com/solanaminter/procurepilot, remote
+      current as of Oct 19 (full backlog pushed)
 - [x] **Demo video < 3 min** — PRODUCED Oct 19: `video/procurepilot-demo-video.mp4`
       (2:41, H.264+AAC, 29.7 MB; 7-beat narrated walkthrough + architecture,
       local Kokoro af_heart narration, free TTS; HyperFrames project re-renderable
-      at `video/hf-demo/`). ⏳ YouTube upload still his tap (file-picker).
+      at `video/hf-demo/`). ✅ Uploaded to YouTube (Public) Oct 19:
+      https://www.youtube.com/watch?v=u-Ym7ol4QP0
 - [x] Text description + tools used and how — README covers; Devpost submission
       text package drafted Oct 19 (`DEVPOST_SUBMISSION_TEXT.md`: title, tagline,
       main description, Built With, rubric mapping, links; blockers noted)
