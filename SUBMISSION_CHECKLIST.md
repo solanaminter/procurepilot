@@ -13,15 +13,23 @@ Implementation, Design, Potential Impact, Innovation/Idea, Presentation.
       compare → human approval → PayPal order (Orders v2)
 - [x] Working prototype — chat UI + comparison cards + approval gate + dashboard,
       build green and evals 5/5 (verified Oct 11)
-- [ ] **Functional demo the judges can run** — needs EITHER a hosted demo URL
-      (blocked: Vercel CLI token expired; needs his `vercel login`) OR complete
-      setup/run instructions (repo has README; mock mode runs with zero keys)
+- [x] **Functional demo the judges can run** — LIVE: https://procurepilot-zeta.vercel.app
+      (deployed by coordinator Oct 19 via Vercel CLI; HTTP 200, public, no login
+      wall; serves the full chat + comparison + approval + dashboard app.
+      Oct 19 ~04:00 PT: fixed 2 live bugs — chat 400 on UIMessage `parts`
+      payloads (messageText() now reads parts[]), and empty 1-byte CSS chunk
+      (added missing postcss.config.mjs; now 28.7 KB compiled Tailwind).
+      Verified on production: parts-format POST → 200 with full data-part
+      contract; SDK transport+reader reconstructs all parts, no errors.)
 - [ ] **Public code repo (GitHub) with visible LICENSE** — LICENSE (MIT) in
       repo; repo NOT yet on GitHub (blocked: his GitHub token, transient use)
-- [ ] **Demo video < 3 min, public YouTube** — not yet produced (Phase 3;
-      standing rule: walkthrough + architecture, free TTS only — Kokoro default)
-- [ ] Text description + tools used and how — README covers; submission text
-      draft still to write
+- [x] **Demo video < 3 min** — PRODUCED Oct 19: `video/procurepilot-demo-video.mp4`
+      (2:41, H.264+AAC, 29.7 MB; 7-beat narrated walkthrough + architecture,
+      local Kokoro af_heart narration, free TTS; HyperFrames project re-renderable
+      at `video/hf-demo/`). ⏳ YouTube upload still his tap (file-picker).
+- [x] Text description + tools used and how — README covers; Devpost submission
+      text package drafted Oct 19 (`DEVPOST_SUBMISSION_TEXT.md`: title, tagline,
+      main description, Built With, rubric mapping, links; blockers noted)
 - [ ] Sponsor-prize eligibility: AG Grid dashboard uses ag-grid-community +
       ag-grid-react (merchant analytics); APIMatic Context Plugin play drafted
 
@@ -30,9 +38,12 @@ Implementation, Design, Potential Impact, Innovation/Idea, Presentation.
 1. **PayPal Developer login** (sandbox app) — sandbox wiring is code-ready the
    second it lands; past-winner pattern needs REAL sandbox transactions, never
    mocked. Capture card re-issued Oct 10; still outstanding.
-2. **GitHub token** (transient, never stored) — to publish the public repo.
-3. **Vercel CLI re-login** — to deploy the live demo (new deployments need the
-   SSO Deployment Protection check per AGENTS.md lesson).
+2. **GitHub token** (transient, never stored) — repo `solanaminter/procurepilot` is
+   public and live; 11 local commits ahead of origin/master (AG Studio
+   spend-analyst, Modal vLLM stack, demo-video script, Oct 19 chat+CSS fixes)
+   awaiting push.
+3. **Vercel** — CLI is authenticated and the demo is live (deployed Oct 19); future
+   redeploys need only the working CLI, not a re-login.
 
 ## Non-blocking
 
