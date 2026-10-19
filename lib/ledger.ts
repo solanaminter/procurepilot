@@ -53,7 +53,7 @@ export interface LedgerSummary {
 }
 
 // ─── Seed data ───────────────────────────────────────────────────────────
-// Deterministic demo history: 14 orders over the last ~8 weeks, built from
+// Deterministic demo history: 16 orders over the last ~8 weeks, built from
 // real mock-catalog products/merchants. IDs match the mock adapter's
 // MOCK-XXXXXXXXXX shape. Approval timestamps trail creation by 1–3h.
 
@@ -221,6 +221,29 @@ const SEED: SeedSpec[] = [
     savingsPct: 0,
     lines: [
       { offerId: "ship-labels-2x4-1", title: "Self-Adhesive Shipping Labels 2x4in (500-pack)", merchant: "OfficeHub", quantity: 2, unitPriceCents: 1399, shippingCents: 0 },
+    ],
+  },
+  // ── Seeded anomalies (for the Studio anomaly detectors) ──────────────
+  // A same-week re-order of poly mailers (duplicate) and a bulk toner buy
+  // at a spiked unit price (price spike + unusual amount).
+  {
+    id: "MOCK-3DUP9Q4RA7",
+    createdAt: "2026-10-06T15:40:00Z",
+    status: "APPROVED",
+    approvedAt: "2026-10-06T16:20:00Z",
+    savingsPct: 0.1,
+    lines: [
+      { offerId: "poly-mailer-10x13-4", title: "Poly Mailers 10x13 (100-pack)", merchant: "SupplyNest", quantity: 10, unitPriceCents: 1299, shippingCents: 595 },
+    ],
+  },
+  {
+    id: "MOCK-8SPK2W5TYN",
+    createdAt: "2026-10-08T10:05:00Z",
+    status: "APPROVED",
+    approvedAt: "2026-10-08T11:47:00Z",
+    savingsPct: 0.05,
+    lines: [
+      { offerId: "toner-laser-black-3", title: "Laser Toner Cartridge Black (high yield)", merchant: "SupplyNest", quantity: 12, unitPriceCents: 9999, shippingCents: 495 },
     ],
   },
 ];

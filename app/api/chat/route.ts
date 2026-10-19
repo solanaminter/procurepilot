@@ -50,13 +50,14 @@ export type ProcurePilotUIMessage = UIMessage<unknown, ProcurePilotDataParts>;
 // ─── Helpers ────────────────────────────────────────────────────────────
 
 // Accepts plain { role, content: string } messages as well as SDK UIMessages
-// whose content is an array of parts.
+// whose text lives in `parts` (ai v6 wire format: no `content` field) or in
+// a `content` array of parts.
 function messageText(message: unknown): string {
   if (!message || typeof message !== "object") return "";
-  const content = (message as { content?: unknown }).content;
-  if (typeof content === "string") return content;
-  if (Array.isArray(content)) {
-    return content
+  const record = message as { content?: unknown; parts?: unknown };
+  const collect = (items: unknown): string => {
+    if (!Array.isArray(items)) return "";
+    return items
       .filter(
         (p): p is { type: string; text: string } =>
           !!p &&
@@ -66,8 +67,12 @@ function messageText(message: unknown): string {
       )
       .map((p) => p.text)
       .join("\n");
-  }
-  return "";
+  };
+  if (typeof record.content === "string") return record.content;
+  const fromContent = collect(record.content);
+  if (fromContent) return fromContent;
+  // ai v6 UIMessage wire format: { id, role, parts: [{ type: "text", text }] }
+  return collect(record.parts);
 }
 
 function cannedSummary(

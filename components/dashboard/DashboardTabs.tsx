@@ -1,18 +1,23 @@
 "use client";
 
-// ProcurePilot merchant dashboard — tab navigation between the three
-// dashboard views (Orders / Analytics / Approvals).
+// ProcurePilot merchant dashboard — tab navigation between the dashboard
+// views. Orders / Analytics / Approvals are the AG Grid Community
+// operational views; "Studio AI analyst" is the Studio Agent Framework layer
+// (spend-analyst agent + anomaly alerts), added for the "Best Use of AG
+// Grid / AG Studio" sponsor line.
 
 import { useState } from "react";
 import OrdersGrid from "./OrdersGrid";
 import AnalyticsView from "./AnalyticsView";
 import ApprovalsGrid from "./ApprovalsGrid";
+import StudioView from "./StudioView";
 import type { ApprovalRecord, LedgerOrder } from "@/lib/ledger";
 
 const TABS = [
   { id: "orders", label: "Order ledger" },
   { id: "analytics", label: "Spend analytics" },
   { id: "approvals", label: "Approval history" },
+  { id: "studio", label: "Studio AI analyst" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -54,6 +59,7 @@ export default function DashboardTabs({
       {tab === "orders" && <OrdersGrid orders={orders} />}
       {tab === "analytics" && <AnalyticsView orders={orders} />}
       {tab === "approvals" && <ApprovalsGrid approvals={approvals} />}
+      {tab === "studio" && <StudioView orders={orders} />}
     </div>
   );
 }
